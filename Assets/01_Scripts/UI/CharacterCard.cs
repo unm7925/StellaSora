@@ -27,6 +27,7 @@ public class CharacterCard : MonoBehaviour, IPointerDownHandler
     private Tween _bounceAnimation;
     private float _defaultY;
     private bool _isAnimating;
+    private int _lastDialogueIndex = -1;
     
     private void Awake()
     {
@@ -56,7 +57,19 @@ public class CharacterCard : MonoBehaviour, IPointerDownHandler
 
     private void ShowSpeechBubble()
     {
-        int number = Random.Range(0, dialogue.Length);
+        int number;
+        if (dialogue.Length > 1)
+        {
+            do
+            {
+                number = Random.Range(0, dialogue.Length);
+            } while (number == _lastDialogueIndex);
+        }
+        else
+        {
+            number = 0;
+        }
+        _lastDialogueIndex = number;
         text.text = dialogue[number];
         LayoutRebuilder.ForceRebuildLayoutImmediate(speechBubble.GetComponent<RectTransform>());
         BubbleFade();
