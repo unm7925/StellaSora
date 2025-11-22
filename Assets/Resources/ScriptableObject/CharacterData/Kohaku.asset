@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2f81dc01057fd459b3876fc025db3a, type: 3}
+  m_Name: Kohaku
+  m_EditorClassIdentifier: 
+  characterName: "\uCF54\uD558\uCFE0"
+  role: 2
+  element: 0
+  attackRange: 1
+  thumbnail: {fileID: 21300000, guid: 606b88511e9cc2f41a0f561446632093, type: 3}
+  fullImage: {fileID: 21300000, guid: 826ffbce34c07f24e8f2437f520708f8, type: 3}
+  background: {fileID: 21300000, guid: 94f16af27f909b040a43687c4c3c4192, type: 3}
+  dialogues:
+  - "\uC654\uAD6C\uB098. \uB0B4\uAC00 \uC544\uAE4C \uBCF4\uB0B8 \uBB38\uC790 \uBD24\uC5B4?"
+  - "\uB0E5, \uB0E5\uB0E5, \uB0D0\uC559...... \uC544, \uBCF4\uC2A4.\n\uC751 \uBC29\uAE08
+    \uADF8\uAC74 \uACE0\uC591\uC774\uAC00 \uC544\uB2C8\uB77C \uB098\uC57C."
+  - "\uC798 \uC7A4\uC5B4? \uBC30\uACE0\uD30C."
+  - "\uC548\uB155, \uBC30\uAC00 \uAF2C\uB974\uB975\uAC70\uB824."
+  - "\uC548\uB155, \uBC30\uAC00 \uD145 \uBE44\uC5C8\uC5B4."
+  - "\uC65C \uC77D\uC539\uD574?"
+  - "\uD734\uB300\uD3F0 \uC548\uC5D0\uC11C \uC0B4 \uC218 \uC788\uB2E4\uBA74 \uC88B\uC744
+    \uD150\uB370."
+  - "\uC598, \uBAB8\uC774 \uD479\uC2E0\uD479\uC2E0\uD558\uACE0 \uBCF5\uC2AC\uBCF5\uC2AC\uD574.
+    \uBCF4\uC2A4\uB3C4 \uB9CC\uC838 \uBCFC\uB798?"
+  - "\uBCF4\uC2A4\uB3C4 \uC598\uB791 \uC598\uAE30\uD558\uACE0 \uC2F6\uC5B4?\n\uADF8\uB7FC
+    \uACE0\uC591\uC774 \uB9D0\uC744 \uAC00\uB974\uCCD0 \uC904\uAC8C. \uB0E5, \uB0E5~"
+  - "\uD53C\uACE4\uD574? \uADF8\uB7FC \uC5EC\uAE30 \uC549\uC544. \uC5B4\uAE68 \uBE4C\uB824\uC904\uAC8C."

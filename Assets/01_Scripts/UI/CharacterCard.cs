@@ -7,16 +7,16 @@ using Random = UnityEngine.Random;
 
 public class CharacterCard : MonoBehaviour, IPointerDownHandler
 {
-    [Header("Dialogue Settings")]
+    [Header("대사")]
     [SerializeField] private string[] dialogue;
     
-    [Header("Animation Settings")]
+    [Header("애니메이션")]
     [SerializeField] private float bounceDistance = 20f;
     [SerializeField] private float bounceSpeed = 0.3f;
     [SerializeField] private float bubbleDisplayTime = 2f;
     [SerializeField] private float bubbleFadeSpeed = 0.3f;
     
-    [Header("References")]
+    [Header("참조")]
     [SerializeField] private RectTransform characterImage;
     [SerializeField] private GameObject speechBubble;
     [SerializeField] private TextMeshProUGUI text;
@@ -33,6 +33,17 @@ public class CharacterCard : MonoBehaviour, IPointerDownHandler
     {
         _defaultY = characterImage.anchoredPosition.y;
         _canvasGroup = speechBubble.GetComponent<CanvasGroup>();
+    }
+
+    private void Start()
+    {
+        _canvasGroup.alpha = 0f;
+    }
+    
+    public void SetDialogues(string[] newDialogues)
+    {
+        dialogue = newDialogues;
+        _lastDialogueIndex = -1;
     }
     
     public void OnPointerDown(PointerEventData eventData)
