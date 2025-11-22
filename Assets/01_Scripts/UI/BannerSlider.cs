@@ -13,7 +13,7 @@ public class BannerSlider : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField] private GameObject bannerPrefab;
     [SerializeField] private RectTransform content;
 
-    [Header("배너 애니메이션 설정")]
+    [Header("배너 애니메이션")]
     [SerializeField] private float autoSlideInterval = 5f;
     [SerializeField] private float slideDuration = 0.3f;
     [SerializeField] private float dragThreshold = 50f;
