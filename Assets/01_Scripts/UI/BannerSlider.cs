@@ -11,7 +11,6 @@ public class BannerSlider : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     [Header("참조")]
     [SerializeField] private GameObject bannerPrefab;
-    [SerializeField] private RectTransform viewport;
     [SerializeField] private RectTransform content;
 
     [Header("배너 애니메이션 설정")]
@@ -32,7 +31,7 @@ public class BannerSlider : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     
     void Start()
     {
-        _bannerWidth = viewport.rect.width;
+        _bannerWidth = GetComponent<RectTransform>().rect.width;
 
         CreateBanners();
 
@@ -198,8 +197,11 @@ public class BannerSlider : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         else
         {
             content.DOAnchorPosX(-_bannerWidth, slideDuration).SetEase(Ease.OutQuad);
-            ResetCurrentIndicator();
-            StartAutoSlide();
+            
+            indicatorFills[_currentIndex]
+                .DOFillAmount(0f, slideDuration)
+                .SetEase(Ease.OutQuad)
+                .OnComplete(() => StartAutoSlide());
         }
     }
 
