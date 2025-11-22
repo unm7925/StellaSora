@@ -3,6 +3,12 @@ using UnityEngine;
 
 public class PlayerController : Character
 {
+    [Header("Attack")] 
+    [SerializeField] private int attackDamage = 10;
+    [SerializeField] private float attackRange = 1.5f;
+    [SerializeField] private Vector3 attackBoxSize = new Vector3(1f, 1f, 1f);
+    
+    
     [Header("Movement")] 
     [SerializeField] private float moveSpeed = 5f;
 
@@ -38,14 +44,45 @@ public class PlayerController : Character
         #endif
         
         _moveDirection = new Vector3(horizontal, 0f, vertical).normalized;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Attack();
+        }
     }
-    
+
+    private void Attack()
+    {
+        // 애니메이션 ( 나중 )
+
+        Vector3 attackCenter = transform.position + transform.forward * (attackRange / 2);
+
+        Collider[] hits = Physics.OverlapBox(
+            attackCenter,
+            attackBoxSize / 2,
+            transform.rotation);
+        foreach (Collider hit in hits)
+        {
+            if(hit.transform == transform) continue;
+            
+            IDamageable target = hit.GetComponent<IDamageable>();
+            if (target != null)
+            {
+                target.TakeDamage(attackDamage);
+                Energy += 10;
+                Debug.Log(Energy);
+            }
+        }
+    }
+
     private void Move()
     {
         if (_moveDirection.magnitude > 0.1f)
         {
             Vector3 velocity = _moveDirection * moveSpeed;
             _rigidbody.linearVelocity = new Vector3(velocity.x, _rigidbody.linearVelocity.y, velocity.z);
+            
+            transform.forward = _moveDirection;
         }
         else
         {

@@ -1,9 +1,10 @@
 using UnityEngine;
 
-public class Character : MonoBehaviour
+public class Character : MonoBehaviour, IDamageable
 {
-    [Header("Stats")] protected int maxHP = 100;
-    protected int currentHP;
+    [Header("Stats")] 
+    protected int maxHP = 100;
+    [SerializeField]protected int currentHP;
     protected int maxEnergy = 100;
     protected int currentEnergy;
 
