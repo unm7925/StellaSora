@@ -254,9 +254,12 @@ GameObject:
   - component: {fileID: 368718270}
   - component: {fileID: 368718269}
   - component: {fileID: 368718274}
+  - component: {fileID: 368718276}
+  - component: {fileID: 368718275}
+  - component: {fileID: 368718277}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -286,7 +289,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!136 &368718270
 CapsuleCollider:
@@ -391,12 +394,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0185b6f7a98608b48b4e1ce2cfaba0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInvincible: 0
+--- !u!114 &368718275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368718268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63339c698939b2f4f9a8d8f81dc9a0d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rotateSpeed: 15
+  dashDistance: 4
+  dashDuration: 0.3
+--- !u!114 &368718276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368718268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4841f0748beac042a89e47919a1dc1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   attackDamage: 10
   attackRange: 1.5
   attackBoxSize: {x: 1, y: 1, z: 1}
-  moveSpeed: 5
-  dashDistance: 5
-  dashDuration: 0.3
+  skillDamage: 20
+  skillCooldown: 5
+  skillRange: 4
+  skillBoxSize: {x: 3, y: 3, z: 3}
+  ultimateDamage: 40
+  ultimateEnergyCost: 100
+  ultimateRange: 7
+  ultimateBoxSize: {x: 6, y: 6, z: 6}
+--- !u!114 &368718277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368718268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c269ede319246d409d262fa247e1274, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &460853900
 GameObject:
   m_ObjectHideFlags: 0
@@ -521,7 +570,7 @@ GameObject:
   - component: {fileID: 921168978}
   m_Layer: 3
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -538,6 +587,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e333e875b88ca4189a934032c642c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInvincible: 0
   attackDamage: 10
 --- !u!65 &921168979
 BoxCollider:

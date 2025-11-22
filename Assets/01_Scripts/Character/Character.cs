@@ -7,8 +7,8 @@ public class Character : MonoBehaviour, IDamageable
     protected int currentHP;
     protected int maxEnergy = 100;
     protected int currentEnergy;
-    
-    protected bool isInvincible = false;
+
+    public bool isInvincible = false;
 
 
     // 프로퍼티 캡슐화
