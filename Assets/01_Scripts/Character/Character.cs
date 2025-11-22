@@ -4,9 +4,11 @@ public class Character : MonoBehaviour, IDamageable
 {
     [Header("Stats")] 
     protected int maxHP = 100;
-    [SerializeField]protected int currentHP;
+    protected int currentHP;
     protected int maxEnergy = 100;
     protected int currentEnergy;
+    
+    protected bool isInvincible = false;
 
 
     // 프로퍼티 캡슐화
@@ -31,6 +33,11 @@ public class Character : MonoBehaviour, IDamageable
     
     public virtual void TakeDamage(int damage)
     {
+        if (isInvincible)
+        {
+            return;
+        }
+
         HP -= damage;
 
         if (HP <= 0)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : Character
@@ -11,6 +12,14 @@ public class PlayerController : Character
     
     [Header("Movement")] 
     [SerializeField] private float moveSpeed = 5f;
+    
+    [Header("Dash")]
+    [SerializeField] private float dashDistance = 4f;
+    [SerializeField] private float dashDuration  = 0.3f;
+    
+    private bool isDashing = false;
+    
+    private float invincibleEndTime = 0.7f;
 
     private Rigidbody _rigidbody;
     
@@ -49,6 +58,37 @@ public class PlayerController : Character
         {
             Attack();
         }
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
+        {
+            StartCoroutine(Dash());
+        }
+    }
+
+    private IEnumerator Dash()
+    {
+        isDashing = true;
+        
+        Vector3 dashDirection = transform.forward;
+        
+        float dashSpeed = dashDistance/dashDuration;
+        
+        float elapsedTime = 0f;
+
+        while (elapsedTime < dashDuration)
+        {
+            _rigidbody.linearVelocity = new Vector3(dashDirection.x * dashSpeed,_rigidbody.linearVelocity.y,dashDirection.z*dashSpeed);
+
+            if (elapsedTime >= invincibleEndTime * dashDuration && isInvincible)
+            {
+                isInvincible = false;
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+        
+        isDashing = false;
+        isInvincible = false;
     }
 
     private void Attack()
@@ -77,6 +117,8 @@ public class PlayerController : Character
 
     private void Move()
     {
+        if (isDashing) return;
+        
         if (_moveDirection.magnitude > 0.1f)
         {
             Vector3 velocity = _moveDirection * moveSpeed;
